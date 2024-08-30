@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.5.2+commit.1df8f40c"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": true,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "sig",
+						"type": "bytes4"
+					},
+					{
+						"indexed": true,
+						"name": "usr",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "arg1",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"name": "arg2",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "LogNote",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "/// /nix/store/8xb41r4qd0cjb63wcrxf1qmfg88p0961-dss-6fd7de0/src/lib.sol"
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/uniswapv2/ERC20.sol": "LibNote"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/uniswapv2/ERC20.sol": {
+			"keccak256": "0x37afe616371d2ad1f5ec1a6bc685ba2e9ec95b32aaa90a5859f30b28be1c7ff1",
+			"urls": [
+				"bzzr://1eda4d582dbcf385df4e2f18768d6a8fb63b48fdc0fc690c5a431e1eb17da43c"
+			]
+		}
+	},
+	"version": 1
+}

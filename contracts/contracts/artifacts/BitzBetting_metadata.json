@@ -1,0 +1,384 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_multisigWallet",
+						"type": "address[]"
+					},
+					{
+						"internalType": "contract BitzToken",
+						"name": "_token",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IMultiSigWallet",
+						"name": "_iMultiSigWallet",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_eventId",
+						"type": "uint256"
+					}
+				],
+				"name": "claimReward",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_endTime",
+						"type": "uint256"
+					}
+				],
+				"name": "createEvent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "eventCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "events",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "settled",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint8",
+						"name": "winningRoomba",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_eventId",
+						"type": "uint256"
+					}
+				],
+				"name": "getLosers",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_eventId",
+						"type": "uint256"
+					}
+				],
+				"name": "getWinners",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "multisigWallet",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_roomba",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "betAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "placeBet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_winningRoomba",
+						"type": "uint8"
+					}
+				],
+				"name": "settleEvent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token",
+				"outputs": [
+					{
+						"internalType": "contract BitzToken",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_eventId",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawUnclaimedFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/contracts/BitzBetting.sol": "BitzBetting"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
+			"keccak256": "0x60c65f701957fdd6faea1acb0bb45825791d473693ed9ecb34726fdfaa849dd7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ea290300e0efc4d901244949dc4d877fd46e6c5e43dc2b26620e8efab3ab803f",
+				"dweb:/ipfs/QmcLLJppxKeJWqHxE2CUkcfhuRTgHSn8J4kijcLa5MYhSt"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+			"keccak256": "0xc3e1fa9d1987f8d349dfb4d6fe93bf2ca014b52ba335cfac30bfe71e357e6f80",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c5703ccdeb7b1d685e375ed719117e9edf2ab4bc544f24f23b0d50ec82257229",
+				"dweb:/ipfs/QmTdwkbQq7owpCiyuzE7eh5LrD2ddrBCZ5WHVsWPi1RrTS"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0ea104e577e63faea3b69c415637e99e755dcbf64c5833d7140c35a714d6d90c",
+				"dweb:/ipfs/Qmau6x4Ns9XdyynRCNNp3RhLqijJjFm7z5fyZazfYFGYdq"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+			"keccak256": "0xaa761817f6cd7892fcf158b3c776b34551cde36f48ff9703d53898bc45a94ea2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0ad7c8d4d08938c8dfc43d75a148863fb324b80cf53e0a36f7e5a4ac29008850",
+				"dweb:/ipfs/QmcrhfPgVNf5mkdhQvy1pMv51TFokD3Y4Wa5WZhFqVh8UV"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"contracts/contracts/BitzBetting.sol": {
+			"keccak256": "0xf94d4ffb88ad41ece074105869287779a6a20fe6d9dbaa6bb82d50a194e97600",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c9661737c3e44144904e8e889f26163d4381f27b02330089af9b7992728e3408",
+				"dweb:/ipfs/QmZjA9gYnFfrZTncCGpXRzvPZsMjyQqQ8yrjVo8ocMUsfp"
+			]
+		},
+		"contracts/contracts/BitzToken.sol": {
+			"keccak256": "0x147c28062298cd57592e4f16782ef9514d90535142e2f623fd77eaa54259ebe5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5c200295c12caea6a84fd1d767d9735ae4287e079859f9b17a4a064c51465a29",
+				"dweb:/ipfs/QmNs8zeHxfBkNyBMeiHVgcgw5j82ejipUnFJtrRBPPdyrp"
+			]
+		},
+		"contracts/contracts/ECDSA.sol": {
+			"keccak256": "0xc21ad64bcf3e64033853375b07b9056d05fef2751e9221ce73da4fc2b9ef15b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59ea0c0199cf9b705def08fa9a768798d4a3c45565cb471d7fe4dfa48a668bc7",
+				"dweb:/ipfs/QmNTNDoSUiXnpSun8oZevzwTW4Mnk3U2L95yKmpSMpxdcQ"
+			]
+		},
+		"contracts/contracts/IMultiSigWallet.sol": {
+			"keccak256": "0xe7d4077a04ecb47e0736cee757b5369b3f725b493892072ddb1b11d328150b81",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ce27ccd4e96b103561b349e3be225a810f01e2f84f7733ba5b57a35f63690a64",
+				"dweb:/ipfs/QmbxSNZub1q3q2fZAxJLApG4e79h6WowPVMzCauqinSEY7"
+			]
+		},
+		"contracts/contracts/MultiSigFactory.sol": {
+			"keccak256": "0x84baacc6e5c99baab2e088dc95cfcbd222536d5477f50f34966e17ac0f7b61d1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://64289152fd3d63a6104629d0406e33026b30cd48a0bae3961222aaa26f2879ba",
+				"dweb:/ipfs/QmSnNZ7TcvXccPyoouL6FA2LU9D6qcuMj9smp9p1xS3cBG"
+			]
+		},
+		"contracts/contracts/MultiSigWallet.sol": {
+			"keccak256": "0x439db8f71b3468fb473fc86a6aeec9b5888188db75be8e2c73ef917a8ef9d7c5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dc57a3d9b95d66132ab66b7356d2dab4399e5dada7e5094634405ee4ef960f9a",
+				"dweb:/ipfs/Qmasi7gjyg4u4i6Sg1HjdfMJ7kfzCmpYduyiGomcWarX9e"
+			]
+		}
+	},
+	"version": 1
+}

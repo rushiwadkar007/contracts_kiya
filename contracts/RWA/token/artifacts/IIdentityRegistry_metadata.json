@@ -1,0 +1,528 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "claimTopicsRegistry",
+						"type": "address"
+					}
+				],
+				"name": "ClaimTopicsRegistrySet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "investorAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint16",
+						"name": "country",
+						"type": "uint16"
+					}
+				],
+				"name": "CountryUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "investorAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "contract IIdentity",
+						"name": "identity",
+						"type": "address"
+					}
+				],
+				"name": "IdentityRegistered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "investorAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "contract IIdentity",
+						"name": "identity",
+						"type": "address"
+					}
+				],
+				"name": "IdentityRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "identityStorage",
+						"type": "address"
+					}
+				],
+				"name": "IdentityStorageSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "contract IIdentity",
+						"name": "oldIdentity",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "contract IIdentity",
+						"name": "newIdentity",
+						"type": "address"
+					}
+				],
+				"name": "IdentityUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "trustedIssuersRegistry",
+						"type": "address"
+					}
+				],
+				"name": "TrustedIssuersRegistrySet",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_userAddresses",
+						"type": "address[]"
+					},
+					{
+						"internalType": "contract IIdentity[]",
+						"name": "_identities",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint16[]",
+						"name": "_countries",
+						"type": "uint16[]"
+					}
+				],
+				"name": "batchRegisterIdentity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					}
+				],
+				"name": "contains",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					}
+				],
+				"name": "deleteIdentity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					}
+				],
+				"name": "identity",
+				"outputs": [
+					{
+						"internalType": "contract IIdentity",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "identityStorage",
+				"outputs": [
+					{
+						"internalType": "contract IIdentityRegistryStorage",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					}
+				],
+				"name": "investorCountry",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					}
+				],
+				"name": "isVerified",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "issuersRegistry",
+				"outputs": [
+					{
+						"internalType": "contract ITrustedIssuersRegistry",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IIdentity",
+						"name": "_identity",
+						"type": "address"
+					},
+					{
+						"internalType": "uint16",
+						"name": "_country",
+						"type": "uint16"
+					}
+				],
+				"name": "registerIdentity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_claimTopicsRegistry",
+						"type": "address"
+					}
+				],
+				"name": "setClaimTopicsRegistry",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_identityRegistryStorage",
+						"type": "address"
+					}
+				],
+				"name": "setIdentityRegistryStorage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_trustedIssuersRegistry",
+						"type": "address"
+					}
+				],
+				"name": "setTrustedIssuersRegistry",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "topicsRegistry",
+				"outputs": [
+					{
+						"internalType": "contract IClaimTopicsRegistry",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint16",
+						"name": "_country",
+						"type": "uint16"
+					}
+				],
+				"name": "updateCountry",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IIdentity",
+						"name": "_identity",
+						"type": "address"
+					}
+				],
+				"name": "updateIdentity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"batchRegisterIdentity(address[],address[],uint16[])": {
+					"details": "function allowing to register identities in batch  This function can only be called by a wallet set as agent of the smart contract  Requires that none of the users has an identity contract already registered.  IMPORTANT : THIS TRANSACTION COULD EXCEED GAS LIMIT IF `_userAddresses.length` IS TOO HIGH,  USE WITH CARE OR YOU COULD LOSE TX FEES WITH AN \"OUT OF GAS\" TRANSACTION",
+					"params": {
+						"_countries": "The countries of the corresponding investors  emits _userAddresses.length `IdentityRegistered` events",
+						"_identities": "The addresses of the corresponding identity contracts",
+						"_userAddresses": "The addresses of the users"
+					}
+				},
+				"contains(address)": {
+					"details": "This functions checks whether a wallet has its Identity registered or not  in the Identity Registry.",
+					"params": {
+						"_userAddress": "The address of the user to be checked."
+					},
+					"returns": {
+						"_0": "'True' if the address is contained in the Identity Registry, 'false' if not."
+					}
+				},
+				"deleteIdentity(address)": {
+					"details": "Removes an user from the identity registry.  Requires that the user have an identity contract already deployed that will be deleted.  This function can only be called by a wallet set as agent of the smart contract",
+					"params": {
+						"_userAddress": "The address of the user to be removed  emits `IdentityRemoved` event"
+					}
+				},
+				"identity(address)": {
+					"details": "Returns the onchainID of an investor.",
+					"params": {
+						"_userAddress": "The wallet of the investor"
+					}
+				},
+				"identityStorage()": {
+					"details": "Returns the IdentityRegistryStorage linked to the current IdentityRegistry."
+				},
+				"investorCountry(address)": {
+					"details": "Returns the country code of an investor.",
+					"params": {
+						"_userAddress": "The wallet of the investor"
+					}
+				},
+				"isVerified(address)": {
+					"details": "This functions checks whether an identity contract  corresponding to the provided user address has the required claims or not based  on the data fetched from trusted issuers registry and from the claim topics registry",
+					"params": {
+						"_userAddress": "The address of the user to be verified."
+					},
+					"returns": {
+						"_0": "'True' if the address is verified, 'false' if not."
+					}
+				},
+				"issuersRegistry()": {
+					"details": "Returns the TrustedIssuersRegistry linked to the current IdentityRegistry."
+				},
+				"registerIdentity(address,address,uint16)": {
+					"details": "Register an identity contract corresponding to a user address.  Requires that the user doesn't have an identity contract already registered.  This function can only be called by a wallet set as agent of the smart contract",
+					"params": {
+						"_country": "The country of the investor  emits `IdentityRegistered` event",
+						"_identity": "The address of the user's identity contract",
+						"_userAddress": "The address of the user"
+					}
+				},
+				"setClaimTopicsRegistry(address)": {
+					"details": "Replace the actual claimTopicsRegistry contract with a new one.  This function can only be called by the wallet set as owner of the smart contract",
+					"params": {
+						"_claimTopicsRegistry": "The address of the new claim Topics Registry  emits `ClaimTopicsRegistrySet` event"
+					}
+				},
+				"setIdentityRegistryStorage(address)": {
+					"details": "Replace the actual identityRegistryStorage contract with a new one.  This function can only be called by the wallet set as owner of the smart contract",
+					"params": {
+						"_identityRegistryStorage": "The address of the new Identity Registry Storage  emits `IdentityStorageSet` event"
+					}
+				},
+				"setTrustedIssuersRegistry(address)": {
+					"details": "Replace the actual trustedIssuersRegistry contract with a new one.  This function can only be called by the wallet set as owner of the smart contract",
+					"params": {
+						"_trustedIssuersRegistry": "The address of the new Trusted Issuers Registry  emits `TrustedIssuersRegistrySet` event"
+					}
+				},
+				"topicsRegistry()": {
+					"details": "Returns the ClaimTopicsRegistry linked to the current IdentityRegistry."
+				},
+				"updateCountry(address,uint16)": {
+					"details": "Updates the country corresponding to a user address.  Requires that the user should have an identity contract already deployed that will be replaced.  This function can only be called by a wallet set as agent of the smart contract",
+					"params": {
+						"_country": "The new country of the user  emits `CountryUpdated` event",
+						"_userAddress": "The address of the user"
+					}
+				},
+				"updateIdentity(address,address)": {
+					"details": "Updates an identity contract corresponding to a user address.  Requires that the user address should be the owner of the identity contract.  Requires that the user should have an identity contract already deployed that will be replaced.  This function can only be called by a wallet set as agent of the smart contract",
+					"params": {
+						"_identity": "The address of the user's new identity contract  emits `IdentityUpdated` event",
+						"_userAddress": "The address of the user"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"ClaimTopicsRegistrySet(address)": {
+					"notice": "this event is emitted when the ClaimTopicsRegistry has been set for the IdentityRegistry  the event is emitted by the IdentityRegistry constructor  `claimTopicsRegistry` is the address of the Claim Topics Registry contract"
+				},
+				"CountryUpdated(address,uint16)": {
+					"notice": "this event is emitted when an Identity's country has been updated  the event is emitted by the 'updateCountry' function  `investorAddress` is the address on which the country has been updated  `country` is the numeric code (ISO 3166-1) of the new country"
+				},
+				"IdentityRegistered(address,address)": {
+					"notice": "this event is emitted when an Identity is registered into the Identity Registry.  the event is emitted by the 'registerIdentity' function  `investorAddress` is the address of the investor's wallet  `identity` is the address of the Identity smart contract (onchainID)"
+				},
+				"IdentityRemoved(address,address)": {
+					"notice": "this event is emitted when an Identity is removed from the Identity Registry.  the event is emitted by the 'deleteIdentity' function  `investorAddress` is the address of the investor's wallet  `identity` is the address of the Identity smart contract (onchainID)"
+				},
+				"IdentityStorageSet(address)": {
+					"notice": "this event is emitted when the IdentityRegistryStorage has been set for the IdentityRegistry  the event is emitted by the IdentityRegistry constructor  `identityStorage` is the address of the Identity Registry Storage contract"
+				},
+				"IdentityUpdated(address,address)": {
+					"notice": "this event is emitted when an Identity has been updated  the event is emitted by the 'updateIdentity' function  `oldIdentity` is the old Identity contract's address to update  `newIdentity` is the new Identity contract's"
+				},
+				"TrustedIssuersRegistrySet(address)": {
+					"notice": "this event is emitted when the TrustedIssuersRegistry has been set for the IdentityRegistry  the event is emitted by the IdentityRegistry constructor  `trustedIssuersRegistry` is the address of the Trusted Issuers Registry contract"
+				}
+			},
+			"kind": "user",
+			"methods": {},
+			"notice": "NOTICE     The T-REX software is licensed under a proprietary license or the GPL v.3.     If you choose to receive it under the GPL v.3 license, the following applies:     T-REX is a suite of smart contracts implementing the ERC-3643 standard and     developed by Tokeny to manage and transfer financial assets on EVM blockchains     Copyright (C) 2023, Tokeny sàrl.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.     This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.     You should have received a copy of the GNU General Public License     along with this program.  If not, see <https://www.gnu.org/licenses/>.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/RWA/token/IToken.sol": "IIdentityRegistry"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/RWA/token/IToken.sol": {
+			"keccak256": "0x2abf7b668c0164f114156a5232c458aeaa645f913e8ebb9d066e11c434b52673",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://f3c22581bb89a52ae085546315e68514f6c41040aa335af4d40031a37f583d95",
+				"dweb:/ipfs/Qmafs6aRkdR4AnzFbetSgVhVHbrGGsmWgLyC3kE5NpJrgw"
+			]
+		}
+	},
+	"version": 1
+}

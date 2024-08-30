@@ -1,0 +1,80 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_passkey",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "verifyUserSign",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "isUserVerified",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "userWalletAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/SignVerify.sol": "Verse"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/SignVerify.sol": {
+			"keccak256": "0x86b014f7701a17b3f887d261de8db58a0605474035f459012348fea65e0f879e",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://2ba6b286d5f72bfd70b9d56a78721f24a0becb9ebf2379aa7db02f798709a599",
+				"dweb:/ipfs/QmRCk2PfgG6AwrdAMvdFG96CmDnbgNZpDcXm6woYGZwTZq"
+			]
+		}
+	},
+	"version": 1
+}

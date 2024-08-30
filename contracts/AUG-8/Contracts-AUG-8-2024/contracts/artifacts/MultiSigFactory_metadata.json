@@ -1,0 +1,264 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "contractId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "owners",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "signaturesRequired",
+						"type": "uint256"
+					}
+				],
+				"name": "Create",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "owners",
+						"type": "address[]"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "signaturesRequired",
+						"type": "uint256"
+					}
+				],
+				"name": "Owners",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_chainId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_owners",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_signaturesRequired",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "orgName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "orgEmail",
+						"type": "string"
+					}
+				],
+				"name": "create",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_owners",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_signaturesRequired",
+						"type": "uint256"
+					}
+				],
+				"name": "emitOwners",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getMultiSig",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "multiSigAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "signaturesRequired",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "organizationName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "organizationEmail",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "multiSigs",
+				"outputs": [
+					{
+						"internalType": "contract MultiSigWallet",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "numberOfMultiSigs",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/AUG-8/Contracts-AUG-8-2024/contracts/MultiSigFactory.sol": "MultiSigFactory"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/ECDSA.sol": {
+			"keccak256": "0xc21ad64bcf3e64033853375b07b9056d05fef2751e9221ce73da4fc2b9ef15b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59ea0c0199cf9b705def08fa9a768798d4a3c45565cb471d7fe4dfa48a668bc7",
+				"dweb:/ipfs/QmNTNDoSUiXnpSun8oZevzwTW4Mnk3U2L95yKmpSMpxdcQ"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/IMultiSigWallet.sol": {
+			"keccak256": "0xe7d4077a04ecb47e0736cee757b5369b3f725b493892072ddb1b11d328150b81",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ce27ccd4e96b103561b349e3be225a810f01e2f84f7733ba5b57a35f63690a64",
+				"dweb:/ipfs/QmbxSNZub1q3q2fZAxJLApG4e79h6WowPVMzCauqinSEY7"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/MultiSigFactory.sol": {
+			"keccak256": "0x84baacc6e5c99baab2e088dc95cfcbd222536d5477f50f34966e17ac0f7b61d1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://64289152fd3d63a6104629d0406e33026b30cd48a0bae3961222aaa26f2879ba",
+				"dweb:/ipfs/QmSnNZ7TcvXccPyoouL6FA2LU9D6qcuMj9smp9p1xS3cBG"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/MultiSigWallet.sol": {
+			"keccak256": "0x439db8f71b3468fb473fc86a6aeec9b5888188db75be8e2c73ef917a8ef9d7c5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dc57a3d9b95d66132ab66b7356d2dab4399e5dada7e5094634405ee4ef960f9a",
+				"dweb:/ipfs/Qmasi7gjyg4u4i6Sg1HjdfMJ7kfzCmpYduyiGomcWarX9e"
+			]
+		}
+	},
+	"version": 1
+}

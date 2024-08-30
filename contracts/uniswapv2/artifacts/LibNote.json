@@ -1,0 +1,88 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"linkReferences": {},
+			"object": "6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820d8fadfe65176a0e51a1a1552d94fbe9d05d0439c360fbb9bb43bdfcbd5bb3f950029",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x35 DUP1 PUSH1 0x1D PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG1 PUSH6 0x627A7A723058 KECCAK256 0xd8 STATICCALL 0xdf 0xe6 MLOAD PUSH23 0xA0E51A1A1552D94FBE9D05D0439C360FBB9BB43BDFCBD5 0xbb EXTCODEHASH SWAP6 STOP 0x29 ",
+			"sourceMap": "1073:1165:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1073:1165:0;;;;;;;"
+		},
+		"deployedBytecode": {
+			"linkReferences": {},
+			"object": "6080604052600080fdfea165627a7a72305820d8fadfe65176a0e51a1a1552d94fbe9d05d0439c360fbb9bb43bdfcbd5bb3f950029",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG1 PUSH6 0x627A7A723058 KECCAK256 0xd8 STATICCALL 0xdf 0xe6 MLOAD PUSH23 0xA0E51A1A1552D94FBE9D05D0439C360FBB9BB43BDFCBD5 0xbb EXTCODEHASH SWAP6 STOP 0x29 ",
+			"sourceMap": "1073:1165:0:-;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "10600",
+				"executionCost": "66",
+				"totalCost": "10666"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": [
+		{
+			"anonymous": true,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "sig",
+					"type": "bytes4"
+				},
+				{
+					"indexed": true,
+					"name": "usr",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"name": "arg1",
+					"type": "bytes32"
+				},
+				{
+					"indexed": true,
+					"name": "arg2",
+					"type": "bytes32"
+				},
+				{
+					"indexed": false,
+					"name": "data",
+					"type": "bytes"
+				}
+			],
+			"name": "LogNote",
+			"type": "event"
+		}
+	]
+}

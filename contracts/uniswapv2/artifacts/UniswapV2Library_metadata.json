@@ -1,0 +1,40 @@
+{
+	"compiler": {
+		"version": "0.6.6+commit.6c089d02"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/uniswapv2/Router.sol": "UniswapV2Library"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/uniswapv2/Router.sol": {
+			"keccak256": "0xddc7160ec68299aa3344132f1f823cf811a8a5c40bba1daaa13ca84f3dcaa634",
+			"urls": [
+				"bzz-raw://3fdbf824ea6594e764696a3c9a93814994ac5d9aef2111fc824ed000d7a61fbf",
+				"dweb:/ipfs/QmQm8feQZqvPGiqoMMFHEovV51B2N2wB8vnQnV3iivZBku"
+			]
+		}
+	},
+	"version": 1
+}

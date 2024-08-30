@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to array types.",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DepositTokenization.sol": "Arrays"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DepositTokenization.sol": {
+			"keccak256": "0x55c9fdaf2225c4243c129dfbc71a0e2d8db003386b63926cfa909414f41d6e25",
+			"urls": [
+				"bzz-raw://c3adf9d8710c804ee08fbfd6001eb9b133d11eddcf90f5fc1d54f3dbc8c26409",
+				"dweb:/ipfs/QmNyB9wizpUTRVw2YV6rG6koxS1sKAQShWZerakLAykXdw"
+			]
+		}
+	},
+	"version": 1
+}

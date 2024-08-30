@@ -1,0 +1,4675 @@
+{
+	"id": "67cb9462af2da21310a72db810ae4924",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.25",
+	"solcLongVersion": "0.8.25+commit.b61c2a91",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/ITokenizationRoleManager.sol": {
+				"content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface ITokenizationRoleManager {\n    struct RoleRequest {\n        string name;\n        string email;\n        uint256 userId;\n        address requester;\n        string roleType;\n        bool approved;\n        bool rejected;\n        uint256 approvalCount;\n        uint256 rejectionCount;\n        uint256 voteCount;\n        string userDetails;\n    }\n    struct AdminRequest {\n        uint256 requestID;\n        string losBankID;\n        uint256 bankID;\n        address requester;\n        string roleType;\n        bool approved;\n        bool rejected;\n        uint256 approvalCount;\n        uint256 rejectionCount;\n        uint256 voteCount;\n        bool allVoted;\n        string adminDetails;\n    }\n    struct RegulatorRequest {\n        string ID;\n        address requester;\n        string roleType;\n        uint256 NetworkId;\n        address nodeAddress;\n        bool approved;\n    }\n    struct Banks {\n        uint256 ID;\n        string losBankID;\n        address requester;\n        uint256 NetworkId;\n        bool isApproved;\n        bool isRejected;\n        uint256 approvalCount;\n        string bankDetails;\n        uint256 voteCount;\n        bool allVoted;\n    }\n    function changeVoteParams(uint256 _requiredVoteCount, uint256 _requiredApprovals) external returns(bool);\n    function reqBankRole(string memory losBankID, string memory NetworkId,string memory bankDetails) external;\n    function getBankReqs (uint256 bankID) external returns (Banks memory);\n    function bankAdmReqs(string memory _losBankID, string memory _admID) external returns (AdminRequest memory);\n    function getBankApps(string memory id)  external returns (address[] memory);\n    function apprBankReq(string memory bankID) external;\n    function getBankApprovalStatus(address _bankWalletAddress) external  returns(bool);\n    function rejectBankReq(string memory Id) external;\n    function reqBankAdmin(string memory roleType,string memory _losBankID,string memory bankID,string memory adminDetails) external;\n    function appBankAdm(string memory bankID,string memory _losBankID,string memory _id,string memory _totalApprovedAdmins, address requester) external;\n    function rejectBankAdm(uint256 bankID,string memory _losBankID,uint256 id,uint256 totalApprovedAdmins, address requester) external;\n    function getAdmReqs(string memory _losBankId, uint256 bankID) external returns (AdminRequest memory);\n    function requestUserRole(string memory _losBankID,string memory roleType,string memory _name, string memory userDetails, string memory email) external;\n    function approveUserRoleRequest(string memory _losBankID,uint256 _userId,uint256 totalApprovedAdmins, address requester, string memory email) external;\n    function rejectUserRoleRequest(string memory _losBankID,uint256 _userId, string memory _totalApprovedAdmins, address requester, string memory email) external;\n    function getUserRequests(string memory _losBankID) external view returns (uint256);\n    function isUserApproved(string memory _losBankID, uint256 _userID) external view returns(bool);\n    function isAdminApproved(string memory _losBankID, uint256 _userID) external view returns(bool);\n    function getAdmin(string memory _losBankID, address _walletAddress) external view returns(AdminRequest memory);\n    function getUser(string memory _losBankID, address _walletAddress) external view returns(RoleRequest memory);\n    function getUserRoleRequestApprovers(string memory _losBankID, uint256 userRequestID) external view returns(string[] memory);\n    function getUserRoleRequestRejectors(string memory _losBankID, uint256 userRequestID) external view returns(string[] memory);\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": true,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			"contracts/ITokenizationRoleManager.sol": {
+				"ITokenizationRoleManager": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "bankID",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "_id",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "_totalApprovedAdmins",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "requester",
+									"type": "address"
+								}
+							],
+							"name": "appBankAdm",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "bankID",
+									"type": "string"
+								}
+							],
+							"name": "apprBankReq",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "_userId",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "totalApprovedAdmins",
+									"type": "uint256"
+								},
+								{
+									"internalType": "address",
+									"name": "requester",
+									"type": "address"
+								},
+								{
+									"internalType": "string",
+									"name": "email",
+									"type": "string"
+								}
+							],
+							"name": "approveUserRoleRequest",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "_admID",
+									"type": "string"
+								}
+							],
+							"name": "bankAdmReqs",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "uint256",
+											"name": "requestID",
+											"type": "uint256"
+										},
+										{
+											"internalType": "string",
+											"name": "losBankID",
+											"type": "string"
+										},
+										{
+											"internalType": "uint256",
+											"name": "bankID",
+											"type": "uint256"
+										},
+										{
+											"internalType": "address",
+											"name": "requester",
+											"type": "address"
+										},
+										{
+											"internalType": "string",
+											"name": "roleType",
+											"type": "string"
+										},
+										{
+											"internalType": "bool",
+											"name": "approved",
+											"type": "bool"
+										},
+										{
+											"internalType": "bool",
+											"name": "rejected",
+											"type": "bool"
+										},
+										{
+											"internalType": "uint256",
+											"name": "approvalCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "rejectionCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "voteCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "bool",
+											"name": "allVoted",
+											"type": "bool"
+										},
+										{
+											"internalType": "string",
+											"name": "adminDetails",
+											"type": "string"
+										}
+									],
+									"internalType": "struct ITokenizationRoleManager.AdminRequest",
+									"name": "",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "_requiredVoteCount",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "_requiredApprovals",
+									"type": "uint256"
+								}
+							],
+							"name": "changeVoteParams",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "",
+									"type": "bool"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankId",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "bankID",
+									"type": "uint256"
+								}
+							],
+							"name": "getAdmReqs",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "uint256",
+											"name": "requestID",
+											"type": "uint256"
+										},
+										{
+											"internalType": "string",
+											"name": "losBankID",
+											"type": "string"
+										},
+										{
+											"internalType": "uint256",
+											"name": "bankID",
+											"type": "uint256"
+										},
+										{
+											"internalType": "address",
+											"name": "requester",
+											"type": "address"
+										},
+										{
+											"internalType": "string",
+											"name": "roleType",
+											"type": "string"
+										},
+										{
+											"internalType": "bool",
+											"name": "approved",
+											"type": "bool"
+										},
+										{
+											"internalType": "bool",
+											"name": "rejected",
+											"type": "bool"
+										},
+										{
+											"internalType": "uint256",
+											"name": "approvalCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "rejectionCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "voteCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "bool",
+											"name": "allVoted",
+											"type": "bool"
+										},
+										{
+											"internalType": "string",
+											"name": "adminDetails",
+											"type": "string"
+										}
+									],
+									"internalType": "struct ITokenizationRoleManager.AdminRequest",
+									"name": "",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "_walletAddress",
+									"type": "address"
+								}
+							],
+							"name": "getAdmin",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "uint256",
+											"name": "requestID",
+											"type": "uint256"
+										},
+										{
+											"internalType": "string",
+											"name": "losBankID",
+											"type": "string"
+										},
+										{
+											"internalType": "uint256",
+											"name": "bankID",
+											"type": "uint256"
+										},
+										{
+											"internalType": "address",
+											"name": "requester",
+											"type": "address"
+										},
+										{
+											"internalType": "string",
+											"name": "roleType",
+											"type": "string"
+										},
+										{
+											"internalType": "bool",
+											"name": "approved",
+											"type": "bool"
+										},
+										{
+											"internalType": "bool",
+											"name": "rejected",
+											"type": "bool"
+										},
+										{
+											"internalType": "uint256",
+											"name": "approvalCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "rejectionCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "voteCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "bool",
+											"name": "allVoted",
+											"type": "bool"
+										},
+										{
+											"internalType": "string",
+											"name": "adminDetails",
+											"type": "string"
+										}
+									],
+									"internalType": "struct ITokenizationRoleManager.AdminRequest",
+									"name": "",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_bankWalletAddress",
+									"type": "address"
+								}
+							],
+							"name": "getBankApprovalStatus",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "",
+									"type": "bool"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "id",
+									"type": "string"
+								}
+							],
+							"name": "getBankApps",
+							"outputs": [
+								{
+									"internalType": "address[]",
+									"name": "",
+									"type": "address[]"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "bankID",
+									"type": "uint256"
+								}
+							],
+							"name": "getBankReqs",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "uint256",
+											"name": "ID",
+											"type": "uint256"
+										},
+										{
+											"internalType": "string",
+											"name": "losBankID",
+											"type": "string"
+										},
+										{
+											"internalType": "address",
+											"name": "requester",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "NetworkId",
+											"type": "uint256"
+										},
+										{
+											"internalType": "bool",
+											"name": "isApproved",
+											"type": "bool"
+										},
+										{
+											"internalType": "bool",
+											"name": "isRejected",
+											"type": "bool"
+										},
+										{
+											"internalType": "uint256",
+											"name": "approvalCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "string",
+											"name": "bankDetails",
+											"type": "string"
+										},
+										{
+											"internalType": "uint256",
+											"name": "voteCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "bool",
+											"name": "allVoted",
+											"type": "bool"
+										}
+									],
+									"internalType": "struct ITokenizationRoleManager.Banks",
+									"name": "",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "_walletAddress",
+									"type": "address"
+								}
+							],
+							"name": "getUser",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "string",
+											"name": "name",
+											"type": "string"
+										},
+										{
+											"internalType": "string",
+											"name": "email",
+											"type": "string"
+										},
+										{
+											"internalType": "uint256",
+											"name": "userId",
+											"type": "uint256"
+										},
+										{
+											"internalType": "address",
+											"name": "requester",
+											"type": "address"
+										},
+										{
+											"internalType": "string",
+											"name": "roleType",
+											"type": "string"
+										},
+										{
+											"internalType": "bool",
+											"name": "approved",
+											"type": "bool"
+										},
+										{
+											"internalType": "bool",
+											"name": "rejected",
+											"type": "bool"
+										},
+										{
+											"internalType": "uint256",
+											"name": "approvalCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "rejectionCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "voteCount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "string",
+											"name": "userDetails",
+											"type": "string"
+										}
+									],
+									"internalType": "struct ITokenizationRoleManager.RoleRequest",
+									"name": "",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								}
+							],
+							"name": "getUserRequests",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "userRequestID",
+									"type": "uint256"
+								}
+							],
+							"name": "getUserRoleRequestApprovers",
+							"outputs": [
+								{
+									"internalType": "string[]",
+									"name": "",
+									"type": "string[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "userRequestID",
+									"type": "uint256"
+								}
+							],
+							"name": "getUserRoleRequestRejectors",
+							"outputs": [
+								{
+									"internalType": "string[]",
+									"name": "",
+									"type": "string[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "_userID",
+									"type": "uint256"
+								}
+							],
+							"name": "isAdminApproved",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "",
+									"type": "bool"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "_userID",
+									"type": "uint256"
+								}
+							],
+							"name": "isUserApproved",
+							"outputs": [
+								{
+									"internalType": "bool",
+									"name": "",
+									"type": "bool"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "bankID",
+									"type": "uint256"
+								},
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "totalApprovedAdmins",
+									"type": "uint256"
+								},
+								{
+									"internalType": "address",
+									"name": "requester",
+									"type": "address"
+								}
+							],
+							"name": "rejectBankAdm",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "Id",
+									"type": "string"
+								}
+							],
+							"name": "rejectBankReq",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "uint256",
+									"name": "_userId",
+									"type": "uint256"
+								},
+								{
+									"internalType": "string",
+									"name": "_totalApprovedAdmins",
+									"type": "string"
+								},
+								{
+									"internalType": "address",
+									"name": "requester",
+									"type": "address"
+								},
+								{
+									"internalType": "string",
+									"name": "email",
+									"type": "string"
+								}
+							],
+							"name": "rejectUserRoleRequest",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "roleType",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "bankID",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "adminDetails",
+									"type": "string"
+								}
+							],
+							"name": "reqBankAdmin",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "NetworkId",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "bankDetails",
+									"type": "string"
+								}
+							],
+							"name": "reqBankRole",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_losBankID",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "roleType",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "_name",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "userDetails",
+									"type": "string"
+								},
+								{
+									"internalType": "string",
+									"name": "email",
+									"type": "string"
+								}
+							],
+							"name": "requestUserRole",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"appBankAdm(string,string,string,string,address)": "38c05474",
+							"apprBankReq(string)": "1c7d3ef9",
+							"approveUserRoleRequest(string,uint256,uint256,address,string)": "22584a43",
+							"bankAdmReqs(string,string)": "80ad24d1",
+							"changeVoteParams(uint256,uint256)": "a97bc51b",
+							"getAdmReqs(string,uint256)": "b67ff9e5",
+							"getAdmin(string,address)": "a02e5cc2",
+							"getBankApprovalStatus(address)": "df3403af",
+							"getBankApps(string)": "0597a2a8",
+							"getBankReqs(uint256)": "53523c60",
+							"getUser(string,address)": "b7c6fb65",
+							"getUserRequests(string)": "45c82991",
+							"getUserRoleRequestApprovers(string,uint256)": "b3144302",
+							"getUserRoleRequestRejectors(string,uint256)": "3e7ca6d2",
+							"isAdminApproved(string,uint256)": "d3eb72b4",
+							"isUserApproved(string,uint256)": "dc050ec1",
+							"rejectBankAdm(uint256,string,uint256,uint256,address)": "3f9bbe55",
+							"rejectBankReq(string)": "6fb7c4fd",
+							"rejectUserRoleRequest(string,uint256,string,address,string)": "f76ebfb0",
+							"reqBankAdmin(string,string,string,string)": "34755723",
+							"reqBankRole(string,string,string)": "c02ddbe1",
+							"requestUserRole(string,string,string,string,string)": "5ed304c0"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.25+commit.b61c2a91\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"bankID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_totalApprovedAdmins\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"name\":\"appBankAdm\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"bankID\",\"type\":\"string\"}],\"name\":\"apprBankReq\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_userId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalApprovedAdmins\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"approveUserRoleRequest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_admID\",\"type\":\"string\"}],\"name\":\"bankAdmReqs\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"bankID\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"roleType\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"rejected\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"approvalCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rejectionCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"allVoted\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"adminDetails\",\"type\":\"string\"}],\"internalType\":\"struct ITokenizationRoleManager.AdminRequest\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_requiredVoteCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_requiredApprovals\",\"type\":\"uint256\"}],\"name\":\"changeVoteParams\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankId\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"bankID\",\"type\":\"uint256\"}],\"name\":\"getAdmReqs\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"bankID\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"roleType\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"rejected\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"approvalCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rejectionCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"allVoted\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"adminDetails\",\"type\":\"string\"}],\"internalType\":\"struct ITokenizationRoleManager.AdminRequest\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_walletAddress\",\"type\":\"address\"}],\"name\":\"getAdmin\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"bankID\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"roleType\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"rejected\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"approvalCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rejectionCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"allVoted\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"adminDetails\",\"type\":\"string\"}],\"internalType\":\"struct ITokenizationRoleManager.AdminRequest\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bankWalletAddress\",\"type\":\"address\"}],\"name\":\"getBankApprovalStatus\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"getBankApps\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"bankID\",\"type\":\"uint256\"}],\"name\":\"getBankReqs\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"ID\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"losBankID\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"NetworkId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isApproved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isRejected\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"approvalCount\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"bankDetails\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"allVoted\",\"type\":\"bool\"}],\"internalType\":\"struct ITokenizationRoleManager.Banks\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_walletAddress\",\"type\":\"address\"}],\"name\":\"getUser\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"userId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"roleType\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"rejected\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"approvalCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rejectionCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"voteCount\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"userDetails\",\"type\":\"string\"}],\"internalType\":\"struct ITokenizationRoleManager.RoleRequest\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"}],\"name\":\"getUserRequests\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"userRequestID\",\"type\":\"uint256\"}],\"name\":\"getUserRoleRequestApprovers\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"userRequestID\",\"type\":\"uint256\"}],\"name\":\"getUserRoleRequestRejectors\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_userID\",\"type\":\"uint256\"}],\"name\":\"isAdminApproved\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_userID\",\"type\":\"uint256\"}],\"name\":\"isUserApproved\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"bankID\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalApprovedAdmins\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"name\":\"rejectBankAdm\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"Id\",\"type\":\"string\"}],\"name\":\"rejectBankReq\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_userId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_totalApprovedAdmins\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"rejectUserRoleRequest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"roleType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bankID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"adminDetails\",\"type\":\"string\"}],\"name\":\"reqBankAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"losBankID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"NetworkId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bankDetails\",\"type\":\"string\"}],\"name\":\"reqBankRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_losBankID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"roleType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"userDetails\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"requestUserRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ITokenizationRoleManager.sol\":\"ITokenizationRoleManager\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/ITokenizationRoleManager.sol\":{\"keccak256\":\"0xb3ee5e63f3b9ed351ef673762f792bfe904ae2f57c15951dfba0301c86178f47\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://db74f2ccc9dcf4064406de44adfb378df059ec3a769e4a2d9ac4e181fed8f741\",\"dweb:/ipfs/QmVcHNJjRQYNFm4SWYYjdd9pSqGdPfUXcAwFD9Xv8uPbia\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"contracts/ITokenizationRoleManager.sol": {
+				"ast": {
+					"absolutePath": "contracts/ITokenizationRoleManager.sol",
+					"exportedSymbols": {
+						"ITokenizationRoleManager": [
+							296
+						]
+					},
+					"id": 297,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "32:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "ITokenizationRoleManager",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 296,
+							"linearizedBaseContracts": [
+								296
+							],
+							"name": "ITokenizationRoleManager",
+							"nameLocation": "67:24:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"canonicalName": "ITokenizationRoleManager.RoleRequest",
+									"id": 24,
+									"members": [
+										{
+											"constant": false,
+											"id": 3,
+											"mutability": "mutable",
+											"name": "name",
+											"nameLocation": "134:4:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "127:11:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 2,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "127:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 5,
+											"mutability": "mutable",
+											"name": "email",
+											"nameLocation": "155:5:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "148:12:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 4,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "148:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 7,
+											"mutability": "mutable",
+											"name": "userId",
+											"nameLocation": "178:6:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "170:14:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 6,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "170:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 9,
+											"mutability": "mutable",
+											"name": "requester",
+											"nameLocation": "202:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "194:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 8,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "194:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 11,
+											"mutability": "mutable",
+											"name": "roleType",
+											"nameLocation": "228:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "221:15:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 10,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "221:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 13,
+											"mutability": "mutable",
+											"name": "approved",
+											"nameLocation": "251:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "246:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 12,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "246:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 15,
+											"mutability": "mutable",
+											"name": "rejected",
+											"nameLocation": "274:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "269:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 14,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "269:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 17,
+											"mutability": "mutable",
+											"name": "approvalCount",
+											"nameLocation": "300:13:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "292:21:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 16,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "292:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 19,
+											"mutability": "mutable",
+											"name": "rejectionCount",
+											"nameLocation": "331:14:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "323:22:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 18,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "323:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 21,
+											"mutability": "mutable",
+											"name": "voteCount",
+											"nameLocation": "363:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "355:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 20,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "355:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 23,
+											"mutability": "mutable",
+											"name": "userDetails",
+											"nameLocation": "389:11:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 24,
+											"src": "382:18:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 22,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "382:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "RoleRequest",
+									"nameLocation": "105:11:0",
+									"nodeType": "StructDefinition",
+									"scope": 296,
+									"src": "98:309:0",
+									"visibility": "public"
+								},
+								{
+									"canonicalName": "ITokenizationRoleManager.AdminRequest",
+									"id": 49,
+									"members": [
+										{
+											"constant": false,
+											"id": 26,
+											"mutability": "mutable",
+											"name": "requestID",
+											"nameLocation": "450:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "442:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 25,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "442:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 28,
+											"mutability": "mutable",
+											"name": "losBankID",
+											"nameLocation": "476:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "469:16:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 27,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "469:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 30,
+											"mutability": "mutable",
+											"name": "bankID",
+											"nameLocation": "503:6:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "495:14:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 29,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "495:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 32,
+											"mutability": "mutable",
+											"name": "requester",
+											"nameLocation": "527:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "519:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 31,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "519:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 34,
+											"mutability": "mutable",
+											"name": "roleType",
+											"nameLocation": "553:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "546:15:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 33,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "546:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 36,
+											"mutability": "mutable",
+											"name": "approved",
+											"nameLocation": "576:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "571:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 35,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "571:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 38,
+											"mutability": "mutable",
+											"name": "rejected",
+											"nameLocation": "599:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "594:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 37,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "594:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 40,
+											"mutability": "mutable",
+											"name": "approvalCount",
+											"nameLocation": "625:13:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "617:21:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 39,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "617:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 42,
+											"mutability": "mutable",
+											"name": "rejectionCount",
+											"nameLocation": "656:14:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "648:22:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 41,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "648:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 44,
+											"mutability": "mutable",
+											"name": "voteCount",
+											"nameLocation": "688:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "680:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 43,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "680:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 46,
+											"mutability": "mutable",
+											"name": "allVoted",
+											"nameLocation": "712:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "707:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 45,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "707:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 48,
+											"mutability": "mutable",
+											"name": "adminDetails",
+											"nameLocation": "737:12:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 49,
+											"src": "730:19:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 47,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "730:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "AdminRequest",
+									"nameLocation": "419:12:0",
+									"nodeType": "StructDefinition",
+									"scope": 296,
+									"src": "412:344:0",
+									"visibility": "public"
+								},
+								{
+									"canonicalName": "ITokenizationRoleManager.RegulatorRequest",
+									"id": 62,
+									"members": [
+										{
+											"constant": false,
+											"id": 51,
+											"mutability": "mutable",
+											"name": "ID",
+											"nameLocation": "802:2:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 62,
+											"src": "795:9:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 50,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "795:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 53,
+											"mutability": "mutable",
+											"name": "requester",
+											"nameLocation": "822:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 62,
+											"src": "814:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 52,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "814:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 55,
+											"mutability": "mutable",
+											"name": "roleType",
+											"nameLocation": "848:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 62,
+											"src": "841:15:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 54,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "841:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 57,
+											"mutability": "mutable",
+											"name": "NetworkId",
+											"nameLocation": "874:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 62,
+											"src": "866:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 56,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "866:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 59,
+											"mutability": "mutable",
+											"name": "nodeAddress",
+											"nameLocation": "901:11:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 62,
+											"src": "893:19:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 58,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "893:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 61,
+											"mutability": "mutable",
+											"name": "approved",
+											"nameLocation": "927:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 62,
+											"src": "922:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 60,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "922:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "RegulatorRequest",
+									"nameLocation": "768:16:0",
+									"nodeType": "StructDefinition",
+									"scope": 296,
+									"src": "761:181:0",
+									"visibility": "public"
+								},
+								{
+									"canonicalName": "ITokenizationRoleManager.Banks",
+									"id": 83,
+									"members": [
+										{
+											"constant": false,
+											"id": 64,
+											"mutability": "mutable",
+											"name": "ID",
+											"nameLocation": "978:2:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "970:10:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 63,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "970:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 66,
+											"mutability": "mutable",
+											"name": "losBankID",
+											"nameLocation": "997:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "990:16:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 65,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "990:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 68,
+											"mutability": "mutable",
+											"name": "requester",
+											"nameLocation": "1024:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1016:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 67,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "1016:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 70,
+											"mutability": "mutable",
+											"name": "NetworkId",
+											"nameLocation": "1051:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1043:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 69,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "1043:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 72,
+											"mutability": "mutable",
+											"name": "isApproved",
+											"nameLocation": "1075:10:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1070:15:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 71,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "1070:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 74,
+											"mutability": "mutable",
+											"name": "isRejected",
+											"nameLocation": "1100:10:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1095:15:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 73,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "1095:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 76,
+											"mutability": "mutable",
+											"name": "approvalCount",
+											"nameLocation": "1128:13:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1120:21:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 75,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "1120:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 78,
+											"mutability": "mutable",
+											"name": "bankDetails",
+											"nameLocation": "1158:11:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1151:18:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 77,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "1151:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 80,
+											"mutability": "mutable",
+											"name": "voteCount",
+											"nameLocation": "1187:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1179:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 79,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "1179:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 82,
+											"mutability": "mutable",
+											"name": "allVoted",
+											"nameLocation": "1211:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 83,
+											"src": "1206:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bool",
+												"typeString": "bool"
+											},
+											"typeName": {
+												"id": 81,
+												"name": "bool",
+												"nodeType": "ElementaryTypeName",
+												"src": "1206:4:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "Banks",
+									"nameLocation": "954:5:0",
+									"nodeType": "StructDefinition",
+									"scope": 296,
+									"src": "947:279:0",
+									"visibility": "public"
+								},
+								{
+									"functionSelector": "a97bc51b",
+									"id": 92,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "changeVoteParams",
+									"nameLocation": "1240:16:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 88,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 85,
+												"mutability": "mutable",
+												"name": "_requiredVoteCount",
+												"nameLocation": "1265:18:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 92,
+												"src": "1257:26:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 84,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1257:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 87,
+												"mutability": "mutable",
+												"name": "_requiredApprovals",
+												"nameLocation": "1293:18:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 92,
+												"src": "1285:26:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 86,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1285:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1256:56:0"
+									},
+									"returnParameters": {
+										"id": 91,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 90,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 92,
+												"src": "1330:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 89,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "1330:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1329:6:0"
+									},
+									"scope": 296,
+									"src": "1231:105:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "c02ddbe1",
+									"id": 101,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "reqBankRole",
+									"nameLocation": "1350:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 99,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 94,
+												"mutability": "mutable",
+												"name": "losBankID",
+												"nameLocation": "1376:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 101,
+												"src": "1362:23:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 93,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1362:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 96,
+												"mutability": "mutable",
+												"name": "NetworkId",
+												"nameLocation": "1401:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 101,
+												"src": "1387:23:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 95,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1387:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 98,
+												"mutability": "mutable",
+												"name": "bankDetails",
+												"nameLocation": "1425:11:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 101,
+												"src": "1411:25:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 97,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1411:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1361:76:0"
+									},
+									"returnParameters": {
+										"id": 100,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1446:0:0"
+									},
+									"scope": 296,
+									"src": "1341:106:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "53523c60",
+									"id": 109,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getBankReqs",
+									"nameLocation": "1461:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 104,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 103,
+												"mutability": "mutable",
+												"name": "bankID",
+												"nameLocation": "1482:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 109,
+												"src": "1474:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 102,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1474:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1473:16:0"
+									},
+									"returnParameters": {
+										"id": 108,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 107,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 109,
+												"src": "1508:12:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Banks_$83_memory_ptr",
+													"typeString": "struct ITokenizationRoleManager.Banks"
+												},
+												"typeName": {
+													"id": 106,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 105,
+														"name": "Banks",
+														"nameLocations": [
+															"1508:5:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 83,
+														"src": "1508:5:0"
+													},
+													"referencedDeclaration": 83,
+													"src": "1508:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Banks_$83_storage_ptr",
+														"typeString": "struct ITokenizationRoleManager.Banks"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1507:14:0"
+									},
+									"scope": 296,
+									"src": "1452:70:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "80ad24d1",
+									"id": 119,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "bankAdmReqs",
+									"nameLocation": "1536:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 114,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 111,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "1562:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 119,
+												"src": "1548:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 110,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1548:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 113,
+												"mutability": "mutable",
+												"name": "_admID",
+												"nameLocation": "1588:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 119,
+												"src": "1574:20:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 112,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1574:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1547:48:0"
+									},
+									"returnParameters": {
+										"id": 118,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 117,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 119,
+												"src": "1614:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_AdminRequest_$49_memory_ptr",
+													"typeString": "struct ITokenizationRoleManager.AdminRequest"
+												},
+												"typeName": {
+													"id": 116,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 115,
+														"name": "AdminRequest",
+														"nameLocations": [
+															"1614:12:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 49,
+														"src": "1614:12:0"
+													},
+													"referencedDeclaration": 49,
+													"src": "1614:12:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_AdminRequest_$49_storage_ptr",
+														"typeString": "struct ITokenizationRoleManager.AdminRequest"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1613:21:0"
+									},
+									"scope": 296,
+									"src": "1527:108:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "0597a2a8",
+									"id": 127,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getBankApps",
+									"nameLocation": "1649:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 122,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 121,
+												"mutability": "mutable",
+												"name": "id",
+												"nameLocation": "1675:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 127,
+												"src": "1661:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 120,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1661:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1660:18:0"
+									},
+									"returnParameters": {
+										"id": 126,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 125,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 127,
+												"src": "1698:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 123,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "1698:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 124,
+													"nodeType": "ArrayTypeName",
+													"src": "1698:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1697:18:0"
+									},
+									"scope": 296,
+									"src": "1640:76:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "1c7d3ef9",
+									"id": 132,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "apprBankReq",
+									"nameLocation": "1730:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 130,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 129,
+												"mutability": "mutable",
+												"name": "bankID",
+												"nameLocation": "1756:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 132,
+												"src": "1742:20:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 128,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1742:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1741:22:0"
+									},
+									"returnParameters": {
+										"id": 131,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1772:0:0"
+									},
+									"scope": 296,
+									"src": "1721:52:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "df3403af",
+									"id": 139,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getBankApprovalStatus",
+									"nameLocation": "1787:21:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 135,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 134,
+												"mutability": "mutable",
+												"name": "_bankWalletAddress",
+												"nameLocation": "1817:18:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 139,
+												"src": "1809:26:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 133,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1809:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1808:28:0"
+									},
+									"returnParameters": {
+										"id": 138,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 137,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 139,
+												"src": "1855:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 136,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "1855:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1854:6:0"
+									},
+									"scope": 296,
+									"src": "1778:83:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "6fb7c4fd",
+									"id": 144,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "rejectBankReq",
+									"nameLocation": "1875:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 142,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 141,
+												"mutability": "mutable",
+												"name": "Id",
+												"nameLocation": "1903:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 144,
+												"src": "1889:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 140,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1889:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1888:18:0"
+									},
+									"returnParameters": {
+										"id": 143,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1915:0:0"
+									},
+									"scope": 296,
+									"src": "1866:50:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "34755723",
+									"id": 155,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "reqBankAdmin",
+									"nameLocation": "1930:12:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 153,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 146,
+												"mutability": "mutable",
+												"name": "roleType",
+												"nameLocation": "1957:8:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 155,
+												"src": "1943:22:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 145,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1943:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 148,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "1980:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 155,
+												"src": "1966:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 147,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1966:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 150,
+												"mutability": "mutable",
+												"name": "bankID",
+												"nameLocation": "2005:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 155,
+												"src": "1991:20:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 149,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "1991:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 152,
+												"mutability": "mutable",
+												"name": "adminDetails",
+												"nameLocation": "2026:12:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 155,
+												"src": "2012:26:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 151,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2012:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1942:97:0"
+									},
+									"returnParameters": {
+										"id": 154,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2048:0:0"
+									},
+									"scope": 296,
+									"src": "1921:128:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "38c05474",
+									"id": 168,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "appBankAdm",
+									"nameLocation": "2063:10:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 166,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 157,
+												"mutability": "mutable",
+												"name": "bankID",
+												"nameLocation": "2088:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 168,
+												"src": "2074:20:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 156,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2074:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 159,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "2109:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 168,
+												"src": "2095:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 158,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2095:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 161,
+												"mutability": "mutable",
+												"name": "_id",
+												"nameLocation": "2134:3:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 168,
+												"src": "2120:17:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 160,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2120:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 163,
+												"mutability": "mutable",
+												"name": "_totalApprovedAdmins",
+												"nameLocation": "2152:20:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 168,
+												"src": "2138:34:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 162,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2138:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 165,
+												"mutability": "mutable",
+												"name": "requester",
+												"nameLocation": "2182:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 168,
+												"src": "2174:17:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 164,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "2174:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2073:119:0"
+									},
+									"returnParameters": {
+										"id": 167,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2201:0:0"
+									},
+									"scope": 296,
+									"src": "2054:148:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "3f9bbe55",
+									"id": 181,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "rejectBankAdm",
+									"nameLocation": "2216:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 179,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 170,
+												"mutability": "mutable",
+												"name": "bankID",
+												"nameLocation": "2238:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 181,
+												"src": "2230:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 169,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2230:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 172,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "2259:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 181,
+												"src": "2245:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 171,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2245:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 174,
+												"mutability": "mutable",
+												"name": "id",
+												"nameLocation": "2278:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 181,
+												"src": "2270:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 173,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2270:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 176,
+												"mutability": "mutable",
+												"name": "totalApprovedAdmins",
+												"nameLocation": "2289:19:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 181,
+												"src": "2281:27:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 175,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2281:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 178,
+												"mutability": "mutable",
+												"name": "requester",
+												"nameLocation": "2318:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 181,
+												"src": "2310:17:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 177,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "2310:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2229:99:0"
+									},
+									"returnParameters": {
+										"id": 180,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2337:0:0"
+									},
+									"scope": 296,
+									"src": "2207:131:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "b67ff9e5",
+									"id": 191,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getAdmReqs",
+									"nameLocation": "2352:10:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 186,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 183,
+												"mutability": "mutable",
+												"name": "_losBankId",
+												"nameLocation": "2377:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 191,
+												"src": "2363:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 182,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2363:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 185,
+												"mutability": "mutable",
+												"name": "bankID",
+												"nameLocation": "2397:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 191,
+												"src": "2389:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 184,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2389:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2362:42:0"
+									},
+									"returnParameters": {
+										"id": 190,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 189,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 191,
+												"src": "2423:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_AdminRequest_$49_memory_ptr",
+													"typeString": "struct ITokenizationRoleManager.AdminRequest"
+												},
+												"typeName": {
+													"id": 188,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 187,
+														"name": "AdminRequest",
+														"nameLocations": [
+															"2423:12:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 49,
+														"src": "2423:12:0"
+													},
+													"referencedDeclaration": 49,
+													"src": "2423:12:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_AdminRequest_$49_storage_ptr",
+														"typeString": "struct ITokenizationRoleManager.AdminRequest"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2422:21:0"
+									},
+									"scope": 296,
+									"src": "2343:101:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "5ed304c0",
+									"id": 204,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "requestUserRole",
+									"nameLocation": "2458:15:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 202,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 193,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "2488:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 204,
+												"src": "2474:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 192,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2474:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 195,
+												"mutability": "mutable",
+												"name": "roleType",
+												"nameLocation": "2513:8:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 204,
+												"src": "2499:22:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 194,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2499:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 197,
+												"mutability": "mutable",
+												"name": "_name",
+												"nameLocation": "2536:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 204,
+												"src": "2522:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 196,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2522:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 199,
+												"mutability": "mutable",
+												"name": "userDetails",
+												"nameLocation": "2557:11:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 204,
+												"src": "2543:25:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 198,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2543:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 201,
+												"mutability": "mutable",
+												"name": "email",
+												"nameLocation": "2584:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 204,
+												"src": "2570:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 200,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2570:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2473:117:0"
+									},
+									"returnParameters": {
+										"id": 203,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2599:0:0"
+									},
+									"scope": 296,
+									"src": "2449:151:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "22584a43",
+									"id": 217,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "approveUserRoleRequest",
+									"nameLocation": "2614:22:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 215,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 206,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "2651:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 217,
+												"src": "2637:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 205,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2637:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 208,
+												"mutability": "mutable",
+												"name": "_userId",
+												"nameLocation": "2670:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 217,
+												"src": "2662:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 207,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2662:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 210,
+												"mutability": "mutable",
+												"name": "totalApprovedAdmins",
+												"nameLocation": "2686:19:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 217,
+												"src": "2678:27:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 209,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2678:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 212,
+												"mutability": "mutable",
+												"name": "requester",
+												"nameLocation": "2715:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 217,
+												"src": "2707:17:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 211,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "2707:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 214,
+												"mutability": "mutable",
+												"name": "email",
+												"nameLocation": "2740:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 217,
+												"src": "2726:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 213,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2726:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2636:110:0"
+									},
+									"returnParameters": {
+										"id": 216,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2755:0:0"
+									},
+									"scope": 296,
+									"src": "2605:151:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "f76ebfb0",
+									"id": 230,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "rejectUserRoleRequest",
+									"nameLocation": "2770:21:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 228,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 219,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "2806:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 230,
+												"src": "2792:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 218,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2792:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 221,
+												"mutability": "mutable",
+												"name": "_userId",
+												"nameLocation": "2825:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 230,
+												"src": "2817:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 220,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2817:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 223,
+												"mutability": "mutable",
+												"name": "_totalApprovedAdmins",
+												"nameLocation": "2848:20:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 230,
+												"src": "2834:34:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 222,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2834:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 225,
+												"mutability": "mutable",
+												"name": "requester",
+												"nameLocation": "2878:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 230,
+												"src": "2870:17:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 224,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "2870:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 227,
+												"mutability": "mutable",
+												"name": "email",
+												"nameLocation": "2903:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 230,
+												"src": "2889:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 226,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2889:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2791:118:0"
+									},
+									"returnParameters": {
+										"id": 229,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2918:0:0"
+									},
+									"scope": 296,
+									"src": "2761:158:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "45c82991",
+									"id": 237,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getUserRequests",
+									"nameLocation": "2933:15:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 233,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 232,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "2963:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 237,
+												"src": "2949:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 231,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2949:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2948:26:0"
+									},
+									"returnParameters": {
+										"id": 236,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 235,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 237,
+												"src": "2998:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 234,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2998:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2997:9:0"
+									},
+									"scope": 296,
+									"src": "2924:83:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "dc050ec1",
+									"id": 246,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "isUserApproved",
+									"nameLocation": "3021:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 242,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 239,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "3050:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 246,
+												"src": "3036:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 238,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3036:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 241,
+												"mutability": "mutable",
+												"name": "_userID",
+												"nameLocation": "3070:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 246,
+												"src": "3062:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 240,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "3062:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3035:43:0"
+									},
+									"returnParameters": {
+										"id": 245,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 244,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 246,
+												"src": "3101:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 243,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "3101:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3100:6:0"
+									},
+									"scope": 296,
+									"src": "3012:95:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "d3eb72b4",
+									"id": 255,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "isAdminApproved",
+									"nameLocation": "3121:15:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 251,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 248,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "3151:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 255,
+												"src": "3137:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 247,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3137:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 250,
+												"mutability": "mutable",
+												"name": "_userID",
+												"nameLocation": "3171:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 255,
+												"src": "3163:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 249,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "3163:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3136:43:0"
+									},
+									"returnParameters": {
+										"id": 254,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 253,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 255,
+												"src": "3202:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 252,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "3202:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3201:6:0"
+									},
+									"scope": 296,
+									"src": "3112:96:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "a02e5cc2",
+									"id": 265,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getAdmin",
+									"nameLocation": "3222:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 260,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 257,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "3245:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 265,
+												"src": "3231:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 256,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3231:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 259,
+												"mutability": "mutable",
+												"name": "_walletAddress",
+												"nameLocation": "3265:14:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 265,
+												"src": "3257:22:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 258,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "3257:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3230:50:0"
+									},
+									"returnParameters": {
+										"id": 264,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 263,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 265,
+												"src": "3303:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_AdminRequest_$49_memory_ptr",
+													"typeString": "struct ITokenizationRoleManager.AdminRequest"
+												},
+												"typeName": {
+													"id": 262,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 261,
+														"name": "AdminRequest",
+														"nameLocations": [
+															"3303:12:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 49,
+														"src": "3303:12:0"
+													},
+													"referencedDeclaration": 49,
+													"src": "3303:12:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_AdminRequest_$49_storage_ptr",
+														"typeString": "struct ITokenizationRoleManager.AdminRequest"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3302:21:0"
+									},
+									"scope": 296,
+									"src": "3213:111:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "b7c6fb65",
+									"id": 275,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getUser",
+									"nameLocation": "3338:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 270,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 267,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "3360:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 275,
+												"src": "3346:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 266,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3346:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 269,
+												"mutability": "mutable",
+												"name": "_walletAddress",
+												"nameLocation": "3380:14:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 275,
+												"src": "3372:22:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 268,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "3372:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3345:50:0"
+									},
+									"returnParameters": {
+										"id": 274,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 273,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 275,
+												"src": "3418:18:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_RoleRequest_$24_memory_ptr",
+													"typeString": "struct ITokenizationRoleManager.RoleRequest"
+												},
+												"typeName": {
+													"id": 272,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 271,
+														"name": "RoleRequest",
+														"nameLocations": [
+															"3418:11:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 24,
+														"src": "3418:11:0"
+													},
+													"referencedDeclaration": 24,
+													"src": "3418:11:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_RoleRequest_$24_storage_ptr",
+														"typeString": "struct ITokenizationRoleManager.RoleRequest"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3417:20:0"
+									},
+									"scope": 296,
+									"src": "3329:109:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "b3144302",
+									"id": 285,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getUserRoleRequestApprovers",
+									"nameLocation": "3452:27:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 280,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 277,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "3494:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 285,
+												"src": "3480:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 276,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3480:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 279,
+												"mutability": "mutable",
+												"name": "userRequestID",
+												"nameLocation": "3514:13:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 285,
+												"src": "3506:21:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 278,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "3506:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3479:49:0"
+									},
+									"returnParameters": {
+										"id": 284,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 283,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 285,
+												"src": "3551:15:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
+													"typeString": "string[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 281,
+														"name": "string",
+														"nodeType": "ElementaryTypeName",
+														"src": "3551:6:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_string_storage_ptr",
+															"typeString": "string"
+														}
+													},
+													"id": 282,
+													"nodeType": "ArrayTypeName",
+													"src": "3551:8:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+														"typeString": "string[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3550:17:0"
+									},
+									"scope": 296,
+									"src": "3443:125:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "3e7ca6d2",
+									"id": 295,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getUserRoleRequestRejectors",
+									"nameLocation": "3582:27:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 290,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 287,
+												"mutability": "mutable",
+												"name": "_losBankID",
+												"nameLocation": "3624:10:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 295,
+												"src": "3610:24:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 286,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3610:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 289,
+												"mutability": "mutable",
+												"name": "userRequestID",
+												"nameLocation": "3644:13:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 295,
+												"src": "3636:21:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 288,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "3636:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3609:49:0"
+									},
+									"returnParameters": {
+										"id": 294,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 293,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 295,
+												"src": "3681:15:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
+													"typeString": "string[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 291,
+														"name": "string",
+														"nodeType": "ElementaryTypeName",
+														"src": "3681:6:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_string_storage_ptr",
+															"typeString": "string"
+														}
+													},
+													"id": 292,
+													"nodeType": "ArrayTypeName",
+													"src": "3681:8:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+														"typeString": "string[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3680:17:0"
+									},
+									"scope": 296,
+									"src": "3573:125:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 297,
+							"src": "57:3643:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "32:3668:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

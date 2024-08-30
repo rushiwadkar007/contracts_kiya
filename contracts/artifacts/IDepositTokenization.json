@@ -1,0 +1,378 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"approveTokenization(string,string,address,uint256,string,uint256)": "fe0961f0",
+			"getDepositAmount(string)": "56fed754",
+			"getDepositTenure(string)": "a13c9738",
+			"getTokenApprovers(string,uint256)": "37db2ac0",
+			"getTokenRejectors(string,uint256)": "ce004886",
+			"getTokenizationRequests(string,uint256,uint256)": "c7e82723",
+			"rejectTokenization(string,string,address,uint256,string,uint256)": "52ec3711",
+			"reqTokenization(string,string,string,uint256,uint256,uint256,address)": "81fd0487"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "url",
+					"type": "string"
+				},
+				{
+					"internalType": "contract IMultiSigWallet",
+					"name": "_iMultSigWallet",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "trxNo",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "adminEmail",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_adminID",
+					"type": "uint256"
+				}
+			],
+			"name": "approveTokenization",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "certRequest",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				}
+			],
+			"name": "getDepositAmount",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				}
+			],
+			"name": "getDepositTenure",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "tokenRequestID",
+					"type": "uint256"
+				}
+			],
+			"name": "getTokenApprovers",
+			"outputs": [
+				{
+					"internalType": "string[]",
+					"name": "",
+					"type": "string[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "tokenRequestID",
+					"type": "uint256"
+				}
+			],
+			"name": "getTokenRejectors",
+			"outputs": [
+				{
+					"internalType": "string[]",
+					"name": "",
+					"type": "string[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "requestID",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_userID",
+					"type": "uint256"
+				}
+			],
+			"name": "getTokenizationRequests",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "string",
+							"name": "bankID",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "certificateID",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "certBlockchainTokenID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "certificateOwner",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "userID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "certDetails",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "certCreationTimestamp",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "totalApprovals",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "totalRejections",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "isApproved",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "isRejected",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "allVoted",
+							"type": "bool"
+						}
+					],
+					"internalType": "struct IDepositTokenization.CertificateRequest",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "url",
+					"type": "string"
+				},
+				{
+					"internalType": "contract IMultiSigWallet",
+					"name": "_iMultSigWallet",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "trxNo",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "adminEmail",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_adminID",
+					"type": "uint256"
+				}
+			],
+			"name": "rejectTokenization",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "certRequest",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_certID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_certDetails",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_userID",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_depositTenure",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_depositAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "contract IMultiSigWallet",
+					"name": "_iMultSigWallet",
+					"type": "address"
+				}
+			],
+			"name": "reqTokenization",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "certRequest",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

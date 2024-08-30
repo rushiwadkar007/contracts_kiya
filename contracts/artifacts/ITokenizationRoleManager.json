@@ -1,0 +1,907 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"appBankAdm(string,string,string,string,address)": "38c05474",
+			"apprBankReq(string)": "1c7d3ef9",
+			"approveUserRoleRequest(string,uint256,uint256,address,string)": "22584a43",
+			"bankAdmReqs(string,string)": "80ad24d1",
+			"changeVoteParams(uint256,uint256)": "a97bc51b",
+			"getAdmReqs(string,uint256)": "b67ff9e5",
+			"getAdmin(string,address)": "a02e5cc2",
+			"getBankApprovalStatus(address)": "df3403af",
+			"getBankApps(string)": "0597a2a8",
+			"getBankReqs(uint256)": "53523c60",
+			"getUser(string,address)": "b7c6fb65",
+			"getUserRequests(string)": "45c82991",
+			"getUserRoleRequestApprovers(string,uint256)": "b3144302",
+			"getUserRoleRequestRejectors(string,uint256)": "3e7ca6d2",
+			"isAdminApproved(string,uint256)": "d3eb72b4",
+			"isUserApproved(string,uint256)": "dc050ec1",
+			"rejectBankAdm(uint256,string,uint256,uint256,address)": "3f9bbe55",
+			"rejectBankReq(string)": "6fb7c4fd",
+			"rejectUserRoleRequest(string,uint256,string,address,string)": "f76ebfb0",
+			"reqBankAdmin(string,string,string,string)": "34755723",
+			"reqBankRole(string,string,string)": "c02ddbe1",
+			"requestUserRole(string,string,string,string,string)": "5ed304c0"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "bankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_id",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_totalApprovedAdmins",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "requester",
+					"type": "address"
+				}
+			],
+			"name": "appBankAdm",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "bankID",
+					"type": "string"
+				}
+			],
+			"name": "apprBankReq",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_userId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "totalApprovedAdmins",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "requester",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "email",
+					"type": "string"
+				}
+			],
+			"name": "approveUserRoleRequest",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_admID",
+					"type": "string"
+				}
+			],
+			"name": "bankAdmReqs",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "requestID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "losBankID",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "bankID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "requester",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "roleType",
+							"type": "string"
+						},
+						{
+							"internalType": "bool",
+							"name": "approved",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "rejected",
+							"type": "bool"
+						},
+						{
+							"internalType": "uint256",
+							"name": "approvalCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "rejectionCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "voteCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "allVoted",
+							"type": "bool"
+						},
+						{
+							"internalType": "string",
+							"name": "adminDetails",
+							"type": "string"
+						}
+					],
+					"internalType": "struct ITokenizationRoleManager.AdminRequest",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_requiredVoteCount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_requiredApprovals",
+					"type": "uint256"
+				}
+			],
+			"name": "changeVoteParams",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankId",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "bankID",
+					"type": "uint256"
+				}
+			],
+			"name": "getAdmReqs",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "requestID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "losBankID",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "bankID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "requester",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "roleType",
+							"type": "string"
+						},
+						{
+							"internalType": "bool",
+							"name": "approved",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "rejected",
+							"type": "bool"
+						},
+						{
+							"internalType": "uint256",
+							"name": "approvalCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "rejectionCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "voteCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "allVoted",
+							"type": "bool"
+						},
+						{
+							"internalType": "string",
+							"name": "adminDetails",
+							"type": "string"
+						}
+					],
+					"internalType": "struct ITokenizationRoleManager.AdminRequest",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "_walletAddress",
+					"type": "address"
+				}
+			],
+			"name": "getAdmin",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "requestID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "losBankID",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "bankID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "requester",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "roleType",
+							"type": "string"
+						},
+						{
+							"internalType": "bool",
+							"name": "approved",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "rejected",
+							"type": "bool"
+						},
+						{
+							"internalType": "uint256",
+							"name": "approvalCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "rejectionCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "voteCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "allVoted",
+							"type": "bool"
+						},
+						{
+							"internalType": "string",
+							"name": "adminDetails",
+							"type": "string"
+						}
+					],
+					"internalType": "struct ITokenizationRoleManager.AdminRequest",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_bankWalletAddress",
+					"type": "address"
+				}
+			],
+			"name": "getBankApprovalStatus",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "id",
+					"type": "string"
+				}
+			],
+			"name": "getBankApps",
+			"outputs": [
+				{
+					"internalType": "address[]",
+					"name": "",
+					"type": "address[]"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "bankID",
+					"type": "uint256"
+				}
+			],
+			"name": "getBankReqs",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "ID",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "losBankID",
+							"type": "string"
+						},
+						{
+							"internalType": "address",
+							"name": "requester",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "NetworkId",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "isApproved",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "isRejected",
+							"type": "bool"
+						},
+						{
+							"internalType": "uint256",
+							"name": "approvalCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "bankDetails",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "voteCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "allVoted",
+							"type": "bool"
+						}
+					],
+					"internalType": "struct ITokenizationRoleManager.Banks",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "_walletAddress",
+					"type": "address"
+				}
+			],
+			"name": "getUser",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "string",
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "email",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "userId",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "requester",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "roleType",
+							"type": "string"
+						},
+						{
+							"internalType": "bool",
+							"name": "approved",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "rejected",
+							"type": "bool"
+						},
+						{
+							"internalType": "uint256",
+							"name": "approvalCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "rejectionCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "voteCount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "userDetails",
+							"type": "string"
+						}
+					],
+					"internalType": "struct ITokenizationRoleManager.RoleRequest",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				}
+			],
+			"name": "getUserRequests",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "userRequestID",
+					"type": "uint256"
+				}
+			],
+			"name": "getUserRoleRequestApprovers",
+			"outputs": [
+				{
+					"internalType": "string[]",
+					"name": "",
+					"type": "string[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "userRequestID",
+					"type": "uint256"
+				}
+			],
+			"name": "getUserRoleRequestRejectors",
+			"outputs": [
+				{
+					"internalType": "string[]",
+					"name": "",
+					"type": "string[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_userID",
+					"type": "uint256"
+				}
+			],
+			"name": "isAdminApproved",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_userID",
+					"type": "uint256"
+				}
+			],
+			"name": "isUserApproved",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "bankID",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "id",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "totalApprovedAdmins",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "requester",
+					"type": "address"
+				}
+			],
+			"name": "rejectBankAdm",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "Id",
+					"type": "string"
+				}
+			],
+			"name": "rejectBankReq",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_userId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "_totalApprovedAdmins",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "requester",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "email",
+					"type": "string"
+				}
+			],
+			"name": "rejectUserRoleRequest",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "roleType",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "bankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "adminDetails",
+					"type": "string"
+				}
+			],
+			"name": "reqBankAdmin",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "NetworkId",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "bankDetails",
+					"type": "string"
+				}
+			],
+			"name": "reqBankRole",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_losBankID",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "roleType",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "_name",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "userDetails",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "email",
+					"type": "string"
+				}
+			],
+			"name": "requestUserRole",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

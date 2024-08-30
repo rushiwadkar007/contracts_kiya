@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/IDepositTokenization.sol": "IDepositTo"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/IDepositTokenization.sol": {
+			"keccak256": "0x43c3a134fba2fbb9f911fd04becabb4ef1dec709163c3591a8706fd5da736f27",
+			"urls": [
+				"bzz-raw://34898ac769b66fe884887497798437ea7f599221d2d0f241be9922fdda1d4f3a",
+				"dweb:/ipfs/QmbekKgbC4WPLp2jBraW63QP4PMr8S3JodZ8pBWKA3RKH1"
+			]
+		}
+	},
+	"version": 1
+}

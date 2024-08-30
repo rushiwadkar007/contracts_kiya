@@ -1,0 +1,60 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "60806040526008805460ff19169055348015601957600080fd5b50603f8060276000396000f3fe6080604052600080fdfea2646970667358221220c33ffd0f6aa10c271b6541aadde505bc25ce235eae4eac98b31feb0c104d698c64736f6c63430008110033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x8 DUP1 SLOAD PUSH1 0xFF NOT AND SWAP1 SSTORE CALLVALUE DUP1 ISZERO PUSH1 0x19 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x3F DUP1 PUSH1 0x27 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xC3 EXTCODEHASH REVERT 0xF PUSH11 0xA10C271B6541AADDE505BC 0x25 0xCE 0x23 0x5E 0xAE 0x4E 0xAC SWAP9 0xB3 0x1F 0xEB 0xC LT 0x4D PUSH10 0x8C64736F6C6343000811 STOP CALLER ",
+			"sourceMap": "115509:1112:0:-:0;;;116117:34;;;-1:-1:-1;;116117:34:0;;;115509:1112;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "6080604052600080fdfea2646970667358221220c33ffd0f6aa10c271b6541aadde505bc25ce235eae4eac98b31feb0c104d698c64736f6c63430008110033",
+			"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xC3 EXTCODEHASH REVERT 0xF PUSH11 0xA10C271B6541AADDE505BC 0x25 0xCE 0x23 0x5E 0xAE 0x4E 0xAC SWAP9 0xB3 0x1F 0xEB 0xC LT 0x4D PUSH10 0x8C64736F6C6343000811 STOP CALLER ",
+			"sourceMap": "115509:1112:0:-:0;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "12600",
+				"executionCost": "24284",
+				"totalCost": "36884"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

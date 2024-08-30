@@ -1,0 +1,354 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_admin1",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_admin2",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_admin3",
+						"type": "address"
+					},
+					{
+						"internalType": "contract MultiSigWallet",
+						"name": "_multisigwallet",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "adminAddress",
+						"type": "address"
+					}
+				],
+				"name": "invalidAdmin",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_challenger",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_accepter",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "BetAccepted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_winner",
+						"type": "address"
+					}
+				],
+				"name": "BetClosed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_challenger",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "BetPublished",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "bitzId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "bit1ID",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "bitsID",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "playerAddress",
+						"type": "address"
+					}
+				],
+				"name": "RequestFulfilled",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "admin1",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "admin2",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "admin3",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "betStatus",
+				"outputs": [
+					{
+						"internalType": "enum Betting.BetStatus",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "admin",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bitzPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "betConludeTime",
+						"type": "uint256"
+					}
+				],
+				"name": "createBet",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "multSigwallet",
+				"outputs": [
+					{
+						"internalType": "contract MultiSigWallet",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalBets",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/AUG-8/Contracts-AUG-8-2024/contracts/Betting.sol": "Betting"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/security/ReentrancyGuard.sol": {
+			"keccak256": "0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://41319e7f621f2dc3733511332c4fd032f8e32ad2aa7fd6f665c19741d9941a34",
+				"dweb:/ipfs/QmcYR3bd862GD1Bc7jwrU9bGxrhUu5na1oP964bDCu2id1"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/Betting.sol": {
+			"keccak256": "0xe9d9995ff378d49233c19f8bc51d9a041be26b57ed0564c37b0da9cf7517c46f",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://540a6fca441103be65ef1e3621420da6b5b322bf0bebfcfe0bf153f70e5cf5d3",
+				"dweb:/ipfs/QmQStiDVZLciEvc8GUPmMkMAxAWRXJ3k8Ankca7uSs21Pj"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/ECDSA.sol": {
+			"keccak256": "0xc21ad64bcf3e64033853375b07b9056d05fef2751e9221ce73da4fc2b9ef15b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59ea0c0199cf9b705def08fa9a768798d4a3c45565cb471d7fe4dfa48a668bc7",
+				"dweb:/ipfs/QmNTNDoSUiXnpSun8oZevzwTW4Mnk3U2L95yKmpSMpxdcQ"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/IMultiSigWallet.sol": {
+			"keccak256": "0xe7d4077a04ecb47e0736cee757b5369b3f725b493892072ddb1b11d328150b81",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ce27ccd4e96b103561b349e3be225a810f01e2f84f7733ba5b57a35f63690a64",
+				"dweb:/ipfs/QmbxSNZub1q3q2fZAxJLApG4e79h6WowPVMzCauqinSEY7"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/MultiSigFactory.sol": {
+			"keccak256": "0x84baacc6e5c99baab2e088dc95cfcbd222536d5477f50f34966e17ac0f7b61d1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://64289152fd3d63a6104629d0406e33026b30cd48a0bae3961222aaa26f2879ba",
+				"dweb:/ipfs/QmSnNZ7TcvXccPyoouL6FA2LU9D6qcuMj9smp9p1xS3cBG"
+			]
+		},
+		"contracts/AUG-8/Contracts-AUG-8-2024/contracts/MultiSigWallet.sol": {
+			"keccak256": "0x439db8f71b3468fb473fc86a6aeec9b5888188db75be8e2c73ef917a8ef9d7c5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dc57a3d9b95d66132ab66b7356d2dab4399e5dada7e5094634405ee4ef960f9a",
+				"dweb:/ipfs/Qmasi7gjyg4u4i6Sg1HjdfMJ7kfzCmpYduyiGomcWarX9e"
+			]
+		}
+	},
+	"version": 1
+}

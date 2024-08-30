@@ -1,0 +1,168 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"create(uint256,address[],uint256,string,string)": "2a876a52",
+			"emitOwners(address,address[],uint256)": "bedf4294",
+			"getMultiSig(uint256)": "9567e7ed",
+			"numberOfMultiSigs()": "2f1d8a23"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_chainId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address[]",
+					"name": "_owners",
+					"type": "address[]"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_signaturesRequired",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "orgName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "orgEmail",
+					"type": "string"
+				}
+			],
+			"name": "create",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_contractAddress",
+					"type": "address"
+				},
+				{
+					"internalType": "address[]",
+					"name": "_owners",
+					"type": "address[]"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_signaturesRequired",
+					"type": "uint256"
+				}
+			],
+			"name": "emitOwners",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_index",
+					"type": "uint256"
+				}
+			],
+			"name": "getMultiSig",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "multiSigAddress",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "signaturesRequired",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "balance",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "organizationName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "organizationEmail",
+					"type": "string"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "numberOfMultiSigs",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	]
+}
